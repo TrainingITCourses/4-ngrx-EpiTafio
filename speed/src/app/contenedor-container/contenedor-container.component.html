@@ -1,0 +1,16 @@
+<div>
+  <h3>Buscador de lanzamientos</h3>
+  <app-buscador-presenter (search)="onSearch($event)"
+                          (filtro)="onFiltratipo($event)"></app-buscador-presenter>
+</div>
+<div>
+  <h3>LISTA LANZAMIENTOS</h3>
+  <app-listado-presenter [lanzamientos]="lanzamientos"
+                          [contador]="contador"></app-listado-presenter>
+</div>
+
+
+
+
+
+
