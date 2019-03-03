@@ -15,7 +15,7 @@ export interface State {
 
 export const reducers: ActionReducerMap<State> = {
 
-  lanzamiento: fromLanzamiento.reducer,
+  lanzamiento: fromLanzamiento.reducer
 };
 
 

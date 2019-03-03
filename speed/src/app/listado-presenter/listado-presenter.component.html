@@ -1,6 +1,8 @@
 <p>
   Resultados: {{ contador.contenido }}
 </p>
-<ul *ngFor="let lanzamiento of lanzamientos">
-    {{lanzamiento.name }}
-  </ul>
+
+
+<li *ngFor="let registro of lanzamientos ">
+   Id: {{ registro.id }} - {{ registro.name }}</li>
+
