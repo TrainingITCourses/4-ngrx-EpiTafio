@@ -13,7 +13,7 @@ export class ContenedorContainerComponent implements OnInit {
 
   public lanzamientos: Array<any> = [];
   public contador  = { cantidad: 0 };
-  public filtro = { valor: 0 };
+  public filtro = { criterio: 0 };
 
   constructor(private store: Store<State>) {}
 
@@ -22,20 +22,21 @@ export class ContenedorContainerComponent implements OnInit {
     this.store.select('lanzamiento').subscribe(valor => ( this.contador = valor));
   }
   onSearch = (searchText: any) =>  {
+
     this.filtra(searchText);
   }
 
   onFiltratipo = (opcion: any) => {
-    this.filtro.valor = opcion;
+    this.filtro.criterio = opcion;
   }
 
   filtra = (searchText: any) => {
     const search = searchText.toLowerCase();
-        if  ( 1 == this.filtro.valor )  {
+        if  ( 1 == this.filtro.criterio )  {
           this.store.dispatch(new PorEstados(search));
-        } else if ( this.filtro.valor == 2) {
+        } else if ( this.filtro.criterio == 2) {
           this.store.dispatch(new PorAgencias(search));
-        } else if ( this.filtro.valor == 3 ) {
+        } else if ( this.filtro.criterio == 3 ) {
           this.store.dispatch(new PorTipos(search));
         } else {
           console.log('"Invalid choice"');
