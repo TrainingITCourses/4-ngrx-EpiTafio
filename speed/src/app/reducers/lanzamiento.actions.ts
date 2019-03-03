@@ -20,5 +20,4 @@ export class PorTipos implements Action {
   constructor(readonly payload: any) {}
 }
 
-
 export type LanzamientoActions = PorAgencias | PorTipos | PorEstados;

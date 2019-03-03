@@ -11,26 +11,25 @@ import { State } from '../reducers/lanzamiento.reducer';
 })
 export class ContenedorContainerComponent implements OnInit {
 
-  public lanzamientos: any[];
-  public contador  = { contenido: 0 };
+  public lanzamientos: Array<any> = [];
+  public contador  = { cantidad: 0 };
   public filtro = { valor: 0 };
 
   constructor(private store: Store<State>) {}
 
-  ngOnInit = () => this.store.select('lanzamiento').subscribe(value => ( this.lanzamientos = value));
-
+  ngOnInit = () => {
+    this.store.select('lanzamiento').subscribe(value => ( this.lanzamientos = value));
+    this.store.select('lanzamiento').subscribe(valor => ( this.contador = valor));
+  }
   onSearch = (searchText: any) =>  {
     this.filtra(searchText);
   }
 
   onFiltratipo = (opcion: any) => {
     this.filtro.valor = opcion;
-    this.contador.contenido = 0;
   }
 
   filtra = (searchText: any) => {
-  //  this.lanzamientos = [];
-    this.contador.contenido = 0;
     const search = searchText.toLowerCase();
         if  ( 1 == this.filtro.valor )  {
           this.store.dispatch(new PorEstados(search));
