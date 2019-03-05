@@ -11,13 +11,14 @@ import { State } from '../reducers/lanzamiento.reducer';
 })
 export class ContenedorContainerComponent implements OnInit {
 
-  public lanzamientos: Array<any> = [];
+  public lanzamientos: Array<any>;
   public contador  = { cantidad: 0 };
   public filtro = { criterio: 0 };
 
   constructor(private store: Store<State>) {}
 
   ngOnInit = () => {
+    this.lanzamientos = [];
     this.store.select('lanzamiento').subscribe(value => ( this.lanzamientos = value));
     this.store.select('lanzamiento').subscribe(valor => ( this.contador = valor));
   }
