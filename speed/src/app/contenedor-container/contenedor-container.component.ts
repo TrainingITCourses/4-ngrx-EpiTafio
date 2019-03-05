@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {  PorAgencias, PorEstados, PorTipos } from '../reducers/lanzamiento.actions';
+import {  PorAgencias, PorEstados, PorTipos, Graba } from '../reducers/lanzamiento.actions';
 import { State } from '../reducers/lanzamiento.reducer';
 
 
@@ -29,6 +29,8 @@ export class ContenedorContainerComponent implements OnInit {
   onFiltratipo = (opcion: any) => {
     this.filtro.criterio = opcion;
   }
+
+  onGraba = () => this.store.dispatch(new Graba(this.lanzamientos));
 
   filtra = (searchText: any) => {
     const search = searchText.toLowerCase();

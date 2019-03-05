@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 import { ContenedorContainerComponent } from './contenedor-container/contenedor-container.component';
 import { BuscadorPresenterComponent } from './buscador-presenter/buscador-presenter.component';
 import { ListadoPresenterComponent } from './listado-presenter/listado-presenter.component';
+import { EffectsModule } from '@ngrx/effects';
+import { LanzamientoEffects } from './reducers/lanzamiento.effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,13 @@ import { ListadoPresenterComponent } from './listado-presenter/listado-presenter
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production
       ? StoreDevtoolsModule.instrument()
-      : []
+      : [],
+    EffectsModule.forRoot([LanzamientoEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

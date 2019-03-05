@@ -8,11 +8,15 @@ import tiposJS from '../../assets/data/missiontypes.json';
 export interface State {
   lanzamientos: Array<any>;
   cantidad: number;
+  _id?: string;
+  message?: string;
 }
 
 export const initialState: State = {
   lanzamientos: [],
-  cantidad: 0
+  cantidad: 0,
+  _id: '',
+  message: ''
 };
 
 export function reducer(state = initialState, action: LanzamientoActions): State {
@@ -70,7 +74,13 @@ export function reducer(state = initialState, action: LanzamientoActions): State
         }
       });
     }
-    return { ...state };
+      return { ...state };
+    case LanzamientoActionTypes.Graba:
+      return state;
+    case LanzamientoActionTypes.Grabado:
+      return action.payload;
+    case LanzamientoActionTypes.NoGrabado:
+      return { ...state, message: action.payload };
     default:
       return state;
   }

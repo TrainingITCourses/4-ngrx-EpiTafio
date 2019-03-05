@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit  } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -7,8 +7,9 @@ import { ChangeDetectionStrategy, Component, Input, OnInit  } from '@angular/cor
   styleUrls: ['./listado-presenter.component.css']
 })
 export class ListadoPresenterComponent implements OnInit {
-  @Input() public lanzamientos: Array<any>;
+  @Input() public lanzamientos: any[];
   @Input() public contador = { cantidad: 99 };
+  @Output() public graba = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit() {
